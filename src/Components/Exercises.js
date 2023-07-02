@@ -2,34 +2,34 @@ import React, { useEffect } from 'react'
 import { Box, Typography, Stack } from '@mui/material'
 import { exerciseOptions, fetchData } from '../utils/fetchData'
 import ExerciseCard from './ExerciseCard'
-// import { fetchMockExercises } from '../utils/mockData';
+import { fetchMockExercises } from '../utils/mockData';
 
 const API = 'https://exercisedb.p.rapidapi.com/exercises'
 const Exercises = ({ exercises, setExercises, bodyPart }) => {
   
-    useEffect(() => {
-        const fetchExercisesData = async () => {
-            let exercisesData = []
-            if (bodyPart === 'all') {
-                exercisesData = await fetchData(API, exerciseOptions)
-            } else {
-                exercisesData = await fetchData(`${API}/bodyPart/${bodyPart}`, exerciseOptions)
-            } 
-            setExercises(exercisesData)
-        }
-        fetchExercisesData()
-    }, [bodyPart])
+    // useEffect(() => {
+    //     const fetchExercisesData = async () => {
+    //         let exercisesData = []
+    //         if (bodyPart === 'all') {
+    //             exercisesData = await fetchData(API, exerciseOptions)
+    //         } else {
+    //             exercisesData = await fetchData(`${API}/bodyPart/${bodyPart}`, exerciseOptions)
+    //         } 
+    //         setExercises(exercisesData)
+    //     }
+    //     fetchExercisesData()
+    // }, [bodyPart])
 
 
 // MOCK DATA
 
-    // useEffect(() => {
-    //     const fetchExercisesData = async () => {
-    //       const exercisesData = await fetchMockExercises();
-    //       setExercises(exercisesData);
-    //     };
-    //     fetchExercisesData();
-    // }, []);
+    useEffect(() => {
+        const fetchExercisesData = async () => {
+          const exercisesData = await fetchMockExercises();
+          setExercises(exercisesData);
+        };
+        fetchExercisesData();
+    }, []);
   
     return (
     <Box

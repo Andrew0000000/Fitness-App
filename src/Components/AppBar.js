@@ -12,8 +12,10 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
+import { Link } from 'react-router-dom';
 
-const pages = ['Home', 'Exercises', 'Progress'];
+
+const pages = ['Home', 'Progress'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function ResponsiveAppBar() {
@@ -40,12 +42,12 @@ function ResponsiveAppBar() {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
             
-            <FitnessCenterIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 2 }} fontSize='large' style={{color: '#efd482'}}/>
+          <FitnessCenterIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 2 }} fontSize='large' style={{color: '#efd482'}}/>
           <Typography
             variant="h3"
             noWrap
             component="a"
-            href="/"
+            href="/home"
             sx={{
               mr: 3,
               display: { xs: 'none', md: 'flex' },
@@ -59,6 +61,23 @@ function ResponsiveAppBar() {
             Fitness Club
           </Typography>
 
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+            {pages.map((page) => (
+              <Button
+                key={page}
+                onClick={handleCloseNavMenu}
+                sx={{ my: 3, color: 'white', display: 'block' }}
+                style={{ color:'#efd482' }}
+                fontFamily='monospace'
+                component={Link}
+                to={`/${page}`}
+              >
+                {page}
+              </Button>
+            ))}
+          </Box>
+
+
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
@@ -68,7 +87,7 @@ function ResponsiveAppBar() {
               onClick={handleOpenNavMenu}
               color='#efd482'
             >
-              <MenuIcon />
+              <MenuIcon style={{ color: '#efd482' }}/>
             </IconButton>
             <Menu
               id="menu-appbar"
@@ -85,50 +104,50 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: 'block', md: 'none' },
+                display: { xs: 'block', md: 'none' }
               }}
-              style={{color: '#efd482'}}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem 
+                  key={page} 
+                  onClick={handleCloseNavMenu}
+                  component={Link}
+                  to={`/${page}`}
+                >
+                  <Typography textAlign="center"
+                    sx={{ color: 'black', display: 'block' }}
+                  >
+                    {page}
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
+
           <FitnessCenterIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 2 }} fontSize='large' style={{color: '#efd482'}}/>
+
+
           <Typography
             variant="h3"
             noWrap
             component="a"
             href=""
             sx={{
-              mr: 2,
+              mr: 0,
               display: { xs: 'flex', md: 'none' },
+              fontSize: { xs: '40px', md: 'none' },
               flexGrow: 1,
               fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
+              fontWeight: 600,
+              letterSpacing: '.1rem',
               color: '#efd482',
               textDecoration: 'none',
             }}
           >
             Fitness Club
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-                style={{ color:'#efd482' }}
-                fontFamily='monospace'
 
-              >
-                {page}
-              </Button>
-            ))}
-          </Box>
+
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">

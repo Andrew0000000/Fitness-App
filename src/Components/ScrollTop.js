@@ -7,7 +7,7 @@ const ScrollTop = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.pageYOffset > 300) {
+      if (window.pageYOffset > 500) {
         setShowScroll(true);
       } else {
         setShowScroll(false);
@@ -30,10 +30,10 @@ const ScrollTop = () => {
       <Box
         onClick={handleClick}
         role="presentation"
-        sx={{ position: 'fixed', bottom: 16, right: 16 }}
+        sx={{ position: 'fixed', bottom: 20, right: 20 }}
       >
         <IconButton aria-label="scroll to top">
-          <KeyboardArrowUpIcon style={{ color: 'yellow' }}/>
+          <KeyboardArrowUpIcon style={{ color: '#212121', backgroundColor: '#ae9a60', borderRadius: '8px', width: '30px', height: '30px' }}/>
         </IconButton>
       </Box>
     </Fade>

@@ -2,21 +2,21 @@ const mockExercises = [
     {
       id: 1,
       name: 'Push-ups',
-      bodyPart: 'Chest',
+      bodyPart: 'chest',
       target: 'Upper body',
       equipment: 'Bodyweight',
     },
     {
       id: 2,
       name: 'Squats',
-      bodyPart: 'Legs',
+      bodyPart: 'upper arms',
       target: 'Lower body',
       equipment: 'Bodyweight',
     },
     {
       id: 3,
       name: 'Plank',
-      bodyPart: 'Core',
+      bodyPart: 'waist',
       target: 'Abs',
       equipment: 'Bodyweight',
     },
@@ -24,7 +24,7 @@ const mockExercises = [
 ];
 
 // Mock data for body parts
-const mockBodyParts = ['All', 'Chest', 'Legs', 'Core', 'Arms', 'Back'];
+const mockBodyParts = ['All', 'chest', 'upper arms', 'waist'];
 
 // Function to simulate API fetch
 const fetchMockExercises = () => {

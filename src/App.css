@@ -4,20 +4,22 @@
 
 COLOR THEME
 
-Primary Color: #212121 (grey)
-Primary Color 2: #616161 (light grey)
-Secondary Color: #ae9a60 (faint yellow)
-Accent Color: #64B5F6 (light blue)
-Text Color: #FFFFFF (white)
+dark grey: #212121
+light grey: #616161
+light yellow: #FFFFE0
+faint yellow: #ae9a60
+faint brown: #a08b60
+cream: #FCEFC1
+white: #FFFFFF
+black: #000000
 
 */
-
 
 
 body {
   font-family: 'Josefin Sans';
   background-color: #212121;
-  color: #FFFFFF;
+  color: #a08b60;
 }
 
 * {
