@@ -6,9 +6,9 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import EditButton from './EditButton';
-import DeleteButton from './DeleteButton';
-import AddButton from './AddButton';
+import EditButton from './Buttons/EditButton';
+import DeleteButton from './Buttons/DeleteButton';
+import AddButton from './Buttons/AddButton';
 import { Box } from '@mui/material';
 
 
