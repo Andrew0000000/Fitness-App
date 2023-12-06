@@ -7,7 +7,17 @@ const ExerciseCard = ( {exercise} ) => {
     <Link
         className='exercise-card' to='/exercise/${exercise.id}'
     >
-        <img src={exercise.gifUrl} alt={exercise.name} loading='lazy'/>
+        <Typography
+            m='5px'
+            color='#fff'
+            fontWeight='bold'
+            pb='30px'
+            textTransform='capitalize'
+            fontSize='22px'
+            textAlign='center'
+        >
+        </Typography>
+        <img src={exercise.gifUrl} alt={exercise.name} loading='lazy' />
         <Stack direction='row' justifyContent='center' >
             <Button
                 sx={{
@@ -40,7 +50,7 @@ const ExerciseCard = ( {exercise} ) => {
             m='5px'
             color='#fff'
             fontWeight='bold'
-            pb='10px'
+            pb='30px'
             textTransform='capitalize'
             fontSize='22px'
             textAlign='center'
