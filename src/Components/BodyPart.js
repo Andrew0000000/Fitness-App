@@ -30,7 +30,7 @@ const BodyPart = ({ item, bodyPart, setBodyPart }) => {
         }}
         onClick={() => {
             setBodyPart(item)
-            window.scrollTo({ top: 1500, behavior: 'smooth' })
+            window.scrollTo({ top: 1000, behavior: 'smooth' })
         }}
     >
         <img src={
