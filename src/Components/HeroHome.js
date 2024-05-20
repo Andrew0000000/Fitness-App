@@ -9,12 +9,6 @@ const HeroHome = () => {
         textAlign='center'
     >
         <Typography
-            fontWeight={600} 
-            sx={{ fontSize: { md: '40px', xs: '28px' }, mb: { md: '250px', xs: '170px' } }}
-        >
-            Your Fitness Journey <br /> Starts Here
-        </Typography>
-        <Typography
             sx={{ fontSize: { md: '30px', xs: '20px' } }}
             lineHeight='35px'
         >
