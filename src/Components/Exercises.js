@@ -1,19 +1,20 @@
 import React, { useEffect } from 'react'
 import { Box, Typography, Stack } from '@mui/material'
-import { exerciseOptions, fetchData } from '../utils/fetchData'
+import { options, fetchData } from '../utils/fetchData'
 import ExerciseCard from './ExerciseCard'
-// import { fetchMockExercises } from '../utils/mockData';
+// import { fetchMockExercises } from '../utils/mockData'
 
 const API = 'https://exercisedb.p.rapidapi.com/exercises'
+
 const Exercises = ({ exercises, setExercises, bodyPart }) => {
   
     useEffect(() => {
         const fetchExercisesData = async () => {
             let exercisesData = []
             if (bodyPart === 'all') {
-                exercisesData = await fetchData(API, exerciseOptions)
+                exercisesData = await fetchData(API, options)
             } else {
-                exercisesData = await fetchData(`${API}/bodyPart/${bodyPart}`, exerciseOptions)
+                exercisesData = await fetchData(`${API}/bodyPart/${bodyPart}?limit=1000&offset=0`, options)
             } 
             setExercises(exercisesData)
         }
@@ -55,9 +56,14 @@ const Exercises = ({ exercises, setExercises, bodyPart }) => {
             flexWrap='wrap'
             justifyContent='center'
         >
-            {exercises.map((exercise, index) => (
-                <ExerciseCard key={index} exercise={exercise} />
-            ))}
+            {Array.isArray(exercises) && exercises.length > 0 ? (
+                exercises.map((exercise, index) => (
+                    <ExerciseCard key={index} exercise={exercise} />
+                ))
+                ) : (
+                    <p>No exercises found</p>
+                )
+            }
         </Stack>
     </Box>
   )

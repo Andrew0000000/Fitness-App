@@ -1,25 +1,34 @@
 import React, { useEffect, useState} from 'react'
-import { Box, Typography, Stack, TextField, Button } from '@mui/material'
-import { exerciseOptions, fetchData } from '../utils/fetchData'
+import { Box, Stack, TextField, Button } from '@mui/material'
+import { options, fetchData } from '../utils/fetchData'
 import HorizontalScrollbar from './HorizontalScrollbar'
 // import { fetchMockExercises, mockBodyParts } from '../utils/mockData';
 
 const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
 
-    const [search, setSearch] = useState('')
-    const [bodyParts, setBodyParts] = useState([])
+    const [search, setSearch] = useState('');
+    const [bodyParts, setBodyParts] = useState([]);
 
-    const API = 'https://exercisedb.p.rapidapi.com/exercises'
+    const API = 'https://exercisedb.p.rapidapi.com/exercises?limit=1000&offset=0'
+    
 
     
     useEffect(() => {
         const fetchExercisesData = async () => {
-                const exercisesData = await fetchData(API, exerciseOptions)
-                const bodyPartNames = ['all', ...new Set(exercisesData.map( item => item.bodyPart ))];
-                setBodyParts(bodyPartNames)
+                try {
+                    const exercisesData = await fetchData(API, options);
+                    if (Array.isArray(exercisesData)) {
+                        const bodyPartNames = ['all', ...new Set(exercisesData.map(item => item.bodyPart))];
+                        setBodyParts(bodyPartNames);
+                    } else {
+                        console.error("Expected an array but got:", exercisesData);
+                    }
+                } catch (error) {
+                    console.error("Failed to fetch data:", error);
+                }
             }
-            fetchExercisesData()
-        }, [])
+            fetchExercisesData();
+        }, []);
             
 // MOCK DATA 
     // useEffect(() => {
@@ -42,22 +51,29 @@ const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
     //     setExercises(searchedExercises);
     //   };
 
-
     const handleSearch = async () => {
         if (search) {
-            const exercisesData = await fetchData(API, exerciseOptions);
-            const searchedExercises = exercisesData.filter((item) => 
-                item.name.toLowerCase().includes(search) 
-                || item.bodyPart.toLowerCase().includes(search)
-                || item.target.toLowerCase().includes(search)
-                || item.equipment.toLowerCase().includes(search),
-            );
-
-            setSearch('');
-            setExercises(searchedExercises);
-
+            try {
+                const exercisesData = await fetchData(API, options);
+                if (Array.isArray(exercisesData)) {
+                    const searchedExercises = exercisesData.filter((item) => 
+                        item.name.toLowerCase().includes(search) 
+                        || item.bodyPart.toLowerCase().includes(search)
+                        || item.target.toLowerCase().includes(search)
+                        || item.equipment.toLowerCase().includes(search)
+                    );
+    
+                    setSearch('');
+                    setExercises(searchedExercises);
+                } else {
+                    console.error("Expected an array but got:", exercisesData);
+                }
+            } catch (error) {
+                console.error("Failed to fetch data:", error);
+            }
         }
-    }
+    };
+    
 
 
     return (
@@ -128,4 +144,4 @@ const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
     )
 }
 
-export default SearchExercises
+export default SearchExercises;
