@@ -37,6 +37,19 @@ const ExerciseCard = ( {exercise} ) => {
             >
                 {exercise.target}
             </Button>
+            <Button
+                sx={{
+                    m: '8px',
+                    color: '#212121',
+                    background: '#ae9a60',
+                    fontSize: '12px',
+                    borderRadius: '10px',
+                    textTransform: 'capitalize',
+                    fontWeight: 'bold',
+                }}
+            >
+                {exercise.equipment}
+            </Button>
         </Stack>
         <Typography
             m='5px'
